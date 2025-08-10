@@ -59,8 +59,6 @@ Prepare a **trials file** mapping enrollment ↔ test pairs if your protocol req
 
 ### 1) Passive protocol
 
-Scores fixed trials without interaction.
-
 ```bash
 python passive.py \
   --enroll-dir data/enroll \
@@ -80,8 +78,6 @@ python active.py \
   --strategy prompt \
   --out runs/active/scores.tsv
 ```
-
-> Use `-h` for the actual options supported by your scripts.
 
 ---
 
@@ -112,7 +108,6 @@ Estimate SNR / C50 and run a simple VAD to filter frames:
 python snr_c50_vad.py --in data/test --out features/test_quality.json
 ```
 
-You can then condition your active strategy on these measures (e.g., re‑record if SNR < threshold).
 
 ---
 
@@ -131,41 +126,5 @@ You can then condition your active strategy on these measures (e.g., re‑record
 |  Passive |       – |              – | baseline          |
 |   Active |       – |              – | prompt‑then‑retry |
 
-> Fill in after you run `compute_EER.py` / `compute_min_dcf.py`.
 
----
 
-## Suggested repository structure
-
-```
-.
-├── active.py                # Active‑testing pipeline
-├── passive.py               # Passive‑testing pipeline
-├── verification.py          # Core verification utilities
-├── compute_EER.py           # Equal Error Rate calculator
-├── compute_min_dcf.py       # minDCF calculator
-├── snr_c50_vad.py           # SNR/C50 estimators + simple VAD
-└── README.md
-```
-
----
-
-## Contributing
-
-Issues and PRs welcome. Please include:
-
-* dataset description,
-* exact command lines,
-* environment details (`python -V`, `pip freeze`).
-
----
-
-## License
-
-*Add a LICENSE file (MIT/Apache‑2.0/BSD‑3‑Clause are common).*
-
----
-
-## Citation
-
-If this toolkit supports a paper/report, add your BibTeX here.
